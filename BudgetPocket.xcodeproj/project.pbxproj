@@ -1,0 +1,90 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A0010001 /* BudgetPocketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0010001; };
+		A0010002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0010002; };
+		A0010003 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0010003; };
+		A0010004 /* BudgetModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0010004; };
+		A0010005 /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0010005; };
+		A0020001 /* BudgetPocketWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020001; };
+		A0020002 /* BudgetModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0010004; };
+		A0020003 /* BudgetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0010005; };
+		A0030001 /* BudgetPocketWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B0030002; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0010001 = {isa = PBXContainerItemProxy; containerPortal = D0010001; proxyType = 1; remoteGlobalIDString = E0020001; remoteInfo = BudgetPocketWidget; };
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F0010001 = {isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = ""; dstSubfolderSpec = 13; files = (A0030001, ); name = "Embed App Extensions"; runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B0010001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPocketApp.swift; sourceTree = "<group>"; };
+		B0010002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B0010003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		B0010004 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetModels.swift; sourceTree = "<group>"; };
+		B0010005 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetStore.swift; sourceTree = "<group>"; };
+		B0010006 = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgetPocket.entitlements; sourceTree = "<group>"; };
+		B0020001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetPocketWidget.swift; sourceTree = "<group>"; };
+		B0020002 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0020003 = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BudgetPocketWidget.entitlements; sourceTree = "<group>"; };
+		B0030001 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetPocket.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0030002 = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BudgetPocketWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0040001 = {isa = PBXFileReference; lastKnownFileType = text.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0020001 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		F0020002 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		G0010001 = {isa = PBXGroup; children = (G0010002, G0010003, G0010004, B0040001, G0010005, ); sourceTree = "<group>"; };
+		G0010002 = {isa = PBXGroup; children = (B0010001, B0010002, B0010003, B0010006, ); path = BudgetPocketApp; sourceTree = "<group>"; };
+		G0010003 = {isa = PBXGroup; children = (B0020001, B0020002, B0020003, ); path = BudgetPocketWidget; sourceTree = "<group>"; };
+		G0010004 = {isa = PBXGroup; children = (B0010004, B0010005, ); path = Shared; sourceTree = "<group>"; };
+		G0010005 = {isa = PBXGroup; children = (B0030001, B0030002, ); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E0010001 = {isa = PBXNativeTarget; buildConfigurationList = H0010001; buildPhases = (F0030001, F0020001, F0010001, ); buildRules = (); dependencies = (C0020001, ); name = BudgetPocket; productName = BudgetPocket; productReference = B0030001; productType = "com.apple.product-type.application"; };
+		E0020001 = {isa = PBXNativeTarget; buildConfigurationList = H0020001; buildPhases = (F0030002, F0020002, ); buildRules = (); dependencies = (); name = BudgetPocketWidget; productName = BudgetPocketWidget; productReference = B0030002; productType = "com.apple.product-type.app-extension"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0010001 = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 2650; LastUpgradeCheck = 2650; TargetAttributes = {E0010001 = {CreatedOnToolsVersion = 26.5; }; E0020001 = {CreatedOnToolsVersion = 26.5; }; }; }; buildConfigurationList = H0030001; compatibilityVersion = "Xcode 16.0"; developmentRegion = ja; hasScannedForEncodings = 0; knownRegions = (ja, Base, ); mainGroup = G0010001; productRefGroup = G0010005; projectDirPath = ""; projectRoot = ""; targets = (E0010001, E0020001, ); };
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0030001 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A0010001, A0010002, A0010003, A0010004, A0010005, ); runOnlyForDeploymentPostprocessing = 0; };
+		F0030002 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (A0020001, A0020002, A0020003, ); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0020001 = {isa = PBXTargetDependency; target = E0020001; targetProxy = C0010001; };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		I0010001 = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = "予算ポケット"; INFOPLIST_KEY_UILaunchScreen_Generation = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.BudgetPocket; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; CODE_SIGN_ENTITLEMENTS = BudgetPocketApp/BudgetPocket.entitlements; }; name = Debug; };
+		I0010002 = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = "予算ポケット"; INFOPLIST_KEY_UILaunchScreen_Generation = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.BudgetPocket; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; CODE_SIGN_ENTITLEMENTS = BudgetPocketApp/BudgetPocket.entitlements; }; name = Release; };
+		I0020001 = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; INFOPLIST_FILE = BudgetPocketWidget/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.BudgetPocket.Widget; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SKIP_INSTALL = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; CODE_SIGN_ENTITLEMENTS = BudgetPocketWidget/BudgetPocketWidget.entitlements; }; name = Debug; };
+		I0020002 = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; INFOPLIST_FILE = BudgetPocketWidget/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.BudgetPocket.Widget; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SKIP_INSTALL = YES; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; CODE_SIGN_ENTITLEMENTS = BudgetPocketWidget/BudgetPocketWidget.entitlements; }; name = Release; };
+		I0030001 = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = dwarf; ENABLE_TESTABILITY = YES; GCC_C_LANGUAGE_STANDARD = gnu17; GCC_OPTIMIZATION_LEVEL = 0; ONLY_ACTIVE_ARCH = YES; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; }; name = Debug; };
+		I0030002 = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; COPY_PHASE_STRIP = YES; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; GCC_C_LANGUAGE_STANDARD = gnu17; SWIFT_COMPILATION_MODE = wholemodule; VALIDATE_PRODUCT = YES; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		H0010001 = {isa = XCConfigurationList; buildConfigurations = (I0010001, I0010002, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		H0020001 = {isa = XCConfigurationList; buildConfigurations = (I0020001, I0020002, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		H0030001 = {isa = XCConfigurationList; buildConfigurations = (I0030001, I0030002, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = D0010001;
+}
