@@ -1,5 +1,5 @@
-const CACHE_NAME = "budget-pocket-v3";
-const ASSETS = ["./", "index.html", "styles.css?v=2", "app.js?v=3", "firebase-config.js", "manifest.webmanifest", "icon.svg", "icon-180.png"];
+const CACHE_NAME = "budget-pocket-v4";
+const ASSETS = ["./", "index.html", "styles.css?v=2", "app.js?v=4", "manifest.webmanifest", "icon.svg", "icon-180.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
@@ -11,6 +11,10 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+  if (new URL(event.request.url).pathname.endsWith("/firebase-config.js")) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
   event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
     const copy = response.clone();
     caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
