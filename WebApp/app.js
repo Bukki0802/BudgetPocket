@@ -1,6 +1,6 @@
 import { firebaseConfig } from "./firebase-config.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, getRedirectResult, GoogleAuthProvider, onAuthStateChanged, signInWithRedirect, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { doc, getDoc, getFirestore, onSnapshot, serverTimestamp, setDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const STORAGE_KEY = "budget-pocket-web-v1";
@@ -163,8 +163,6 @@ async function setupFirebase() {
     cloud = { ...cloud, enabled: true, auth: getAuth(app), db: getFirestore(app) };
     setSyncStatus("ログイン");
 
-    getRedirectResult(cloud.auth).catch(setSyncError);
-
     onAuthStateChanged(cloud.auth, async (user) => {
       cloud.user = user;
       cloud.ready = false;
@@ -221,7 +219,7 @@ async function toggleSync() {
   }
   try {
     setSyncStatus("ログイン中", "cloud");
-    await signInWithRedirect(cloud.auth, new GoogleAuthProvider());
+    await signInWithPopup(cloud.auth, new GoogleAuthProvider());
   } catch (error) { setSyncError(error); }
 }
 

@@ -1,5 +1,5 @@
-const CACHE_NAME = "budget-pocket-v5";
-const ASSETS = ["./", "index.html", "styles.css?v=2", "app.js?v=5", "manifest.webmanifest", "icon.svg", "icon-180.png"];
+const CACHE_NAME = "budget-pocket-v6";
+const ASSETS = ["./", "index.html", "styles.css?v=2", "app.js?v=6", "manifest.webmanifest", "icon.svg", "icon-180.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
