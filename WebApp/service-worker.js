@@ -1,5 +1,5 @@
-const CACHE_NAME = "budget-pocket-v2";
-const ASSETS = ["./", "index.html", "styles.css?v=2", "app.js", "manifest.webmanifest", "icon.svg", "icon-180.png"];
+const CACHE_NAME = "budget-pocket-v3";
+const ASSETS = ["./", "index.html", "styles.css?v=2", "app.js?v=3", "firebase-config.js", "manifest.webmanifest", "icon.svg", "icon-180.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
