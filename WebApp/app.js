@@ -1,6 +1,6 @@
 import { firebaseConfig } from "./firebase-config.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithRedirect, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+import { getAuth, getRedirectResult, GoogleAuthProvider, onAuthStateChanged, signInWithRedirect, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { doc, getDoc, getFirestore, onSnapshot, serverTimestamp, setDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const STORAGE_KEY = "budget-pocket-web-v1";
@@ -11,6 +11,7 @@ const colors = ["#176bff", "#6c55d9", "#ef6b72", "#f0a443", "#29a886", "#43a6c6"
 let state = loadState();
 let selectedMonth = new Date();
 let cloud = { enabled: false, auth: null, db: null, user: null, ref: null, unsubscribe: null, ready: false, saveTimer: null };
+let lastSyncError = "";
 selectedMonth.setDate(1);
 
 const $ = (id) => document.getElementById(id);
@@ -47,8 +48,7 @@ function scheduleCloudSave() {
       await setDoc(cloud.ref, { state, updatedAt: serverTimestamp() }, { merge: true });
       setSyncStatus("同期済み", "cloud");
     } catch (error) {
-      console.error(error);
-      setSyncStatus("同期失敗", "error");
+      setSyncError(error);
     }
   }, 350);
 }
@@ -137,8 +137,15 @@ function moveMonth(offset) {
 function setSyncStatus(text, mode = "") {
   const button = $("syncButton");
   button.textContent = text;
+  button.title = lastSyncError || "";
   button.classList.toggle("cloud", mode === "cloud");
   button.classList.toggle("error", mode === "error");
+}
+
+function setSyncError(error) {
+  console.error(error);
+  lastSyncError = `${error.code || "unknown"}: ${error.message || error}`;
+  setSyncStatus("同期失敗", "error");
 }
 
 function hasFirebaseConfig(config) {
@@ -155,6 +162,8 @@ async function setupFirebase() {
     const app = initializeApp(firebaseConfig);
     cloud = { ...cloud, enabled: true, auth: getAuth(app), db: getFirestore(app) };
     setSyncStatus("ログイン");
+
+    getRedirectResult(cloud.auth).catch(setSyncError);
 
     onAuthStateChanged(cloud.auth, async (user) => {
       cloud.user = user;
@@ -190,18 +199,18 @@ async function setupFirebase() {
           render();
           setSyncStatus("同期済み", "cloud");
         });
-      } catch (error) {
-        console.error(error);
-        setSyncStatus("同期失敗", "error");
-      }
+      } catch (error) { setSyncError(error); }
     });
   } catch (error) {
-    console.error(error);
-    setSyncStatus("設定エラー", "error");
+    setSyncError(error);
   }
 }
 
 async function toggleSync() {
+  if (lastSyncError) {
+    alert(`Firebaseエラー:\n${lastSyncError}`);
+    return;
+  }
   if (!cloud.enabled) {
     alert("Firebase設定がまだ入っていません。firebase-config.js に設定値を入れると同期できます。");
     return;
@@ -210,7 +219,10 @@ async function toggleSync() {
     await signOut(cloud.auth);
     return;
   }
-  await signInWithRedirect(cloud.auth, new GoogleAuthProvider());
+  try {
+    setSyncStatus("ログイン中", "cloud");
+    await signInWithRedirect(cloud.auth, new GoogleAuthProvider());
+  } catch (error) { setSyncError(error); }
 }
 
 $("expenseCategory").innerHTML = categories.map((category) => `<option>${category}</option>`).join("");
